@@ -2,7 +2,8 @@
 
 ## Overview
 
-This tool processes Modern Tibetan text using spaCy models to perform Named Entity Recognition (NER) and Part-of-Speech (POS) tagging. It's specifically designed for Tibetan language processing with specialized tokenizers that handle Tibetan script characteristics.
+The spaCy pipeline `bo_core_news_lg` includes both a Part-of-Speech (POS) tagger and a Named Entity Recognizer (NER), designed for Tibetan language processing. The POS tagger and the NER rely on different Tibetan tokenizers: the POS tagger calls `botok` via `botok_loader.py`, whereas the NER component employs a customized version of `botok` (`unified_botok_tokenizer.py`).
+
 
 ## Features
 
@@ -24,20 +25,29 @@ This tool processes Modern Tibetan text using spaCy models to perform Named Enti
 
 ## Installation
 
-1. Install spaCy and your Tibetan model:
+1. Install botok, see the [instruction](https://github.com/Divergent-Discourses/modern-botok?tab=readme-ov-file#how-to-use) in modern-botok. Also modify the value of `DEFAULT_BOTOK_CONFIG_PATH` in `unified_botok_tokenizer.py` to point to the directory where the `pybo` folder has been created.
+
+2. Install a Tibetan model (bo_core_news_lg).
+      ```bash
+      pip install packages/bo_core_news_lg-0.0.5/dist/bo_core_news_lg-0.0.5.tar.gz # Linux/macOS
+      pip install packages\bo_core_news_lg-0.0.5\dist\bo_core_news_lg-0.0.5.tar.gz # Windonws (cmd)
+      ```
+
+3. Set up a virtual environment and install dependencies.
    ```bash
-   pip install spacy
-   # Install your specific Tibetan model
+   python -m venv venv
+   source venv/bin/activate # On macOS/Linux
+   venv\Scripts\activate # On Windows (cmd)
+   pip install -r requirements.txt
    ```
-
-2. Ensure the custom tokenizer modules are available in your Python path.
-
+   
 ## Usage
 
 ### Basic Command Structure
+Run the commands in the root directory where the `src` folder is located.
 
 ```bash
-python model_executor.py -m <model_name> [options] <input>
+python src/model_executor.py -m <model_name> [options] <input>
 ```
 
 ### Required Arguments
@@ -56,98 +66,35 @@ python model_executor.py -m <model_name> [options] <input>
 ### 1. Basic Text Processing (Full Analysis)
 
 ```bash
-python model_executor.py -m bo_core_news_lg -t "དེ་རིང་ང་ལགས་པའི་འདུ་འཁྲིལ་ལ་འགྲོ་དགོས།"
+python src/model_executor.py -m bo_core_news_lg -t "དེ་རིང་ང་ལགས་པའི་འདུ་འཁྲིལ་ལ་འགྲོ་དགོས།"
 ```
 
 ### 2. Named Entity Recognition Only
 
 ```bash
-python model_executor.py -m bo_core_news_lg -t "བཀྲ་ཤིས་ལྷུན་པོ་དགོན་པ་ཤི་ག་རྩེ་རྫོང་ཁུལ་དུ་ཡོད།" --task ner
+python src/model_executor.py -m bo_core_news_lg -t "བཀྲ་ཤིས་ལྷུན་པོ་དགོན་པ་ཤི་ག་རྩེ་རྫོང་ཁུལ་དུ་ཡོད།" --task ner
 ```
 
 ### 3. Part-of-Speech Tagging Only
 
 ```bash
-python model_executor.py -m bo_core_news_lg -t "ང་ལ་དཔེ་ཆ་དགོས།" --task pos
+python src/model_executor.py -m bo_core_news_lg -t "ང་ལ་དཔེ་ཆ་དགོས།" --task pos
 ```
 
 ### 4. Process File with JSON Output
 
 ```bash
-python model_executor.py -m bo_core_news_lg -i input.txt -f json -o results.json
+python src/model_executor.py -m bo_core_news_lg -i input.txt -f json -o results.json
 ```
 
 ### 5. CSV Output for Further Analysis
 
 ```bash
-python model_executor.py -m bo_core_news_lg -i document.txt -f csv -o analysis.csv
+python src/model_executor.py -m bo_core_news_lg -i document.txt -f csv -o analysis.csv
 ```
 
-## Output Formats
+### 6. Display Help Information
 
-### Text Format (Default)
-Human-readable format with clear sections for entities and tokens:
-
-```
-==================================================
-NLP ANALYSIS RESULTS
-==================================================
-Input Text: [your text]
-Total Entities: 2
-Total Tokens: 8
-
-NAMED ENTITIES:
---------------------
-1. བཀྲ་ཤིས་ལྷུན་པོ་དགོན་པ
-   Label: ORG (Organizations, companies, agencies, institutions, etc.)
-   Position: 0-20
-
-TOKENS (POS TAGGING):
--------------------------
-'བཀྲ་ཤིས་' - POS: NOUN
-'ལྷུན་པོ་' - POS: NOUN
-...
-```
-
-### JSON Format
-Structured data format suitable for programmatic processing:
-
-```json
-{
-  "input_text": "བཀྲ་ཤིས་ལྷུན་པོ་དགོན་པ་ཤི་ག་རྩེ་རྫོང་ཁུལ་དུ་ཡོད།",
-  "entities": [
-    {
-      "text": "བཀྲ་ཤིས་ལྷུན་པོ་དགོན་པ",
-      "label": "ORG",
-      "start": 0,
-      "end": 20,
-      "description": "Organizations, companies, agencies, institutions, etc."
-    }
-  ],
-  "tokens": [
-    {
-      "text": "བཀྲ་ཤིས་",
-      "pos": "NOUN",
-      "is_alpha": true,
-      "is_stop": false,
-      "is_punct": false,
-      "dep": "compound",
-      "head": "ལྷུན་པོ་"
-    }
-  ],
-  "entity_count": 1,
-  "token_count": 8
-}
-```
-
-### CSV Format
-Tabular format for spreadsheet analysis:
-
-```csv
-Type,Text,Label,Description,Start,End
-Entity,"བཀྲ་ཤིས་ལྷུན་པོ་དགོན་པ",ORG,"Organizations, companies, agencies, institutions, etc.",0,20
-
-Type,Text,POS,IsAlpha,IsStop,IsPunct,Dependency,Head
-Token,"བཀྲ་ཤིས་",NOUN,True,False,False,compound,"ལྷུན་པོ་"
-Token,"ལྷུན་པོ་",NOUN,True,False,False,nsubj,"ཡོད"
+```bash
+python src/model_executor.py --help
 ```

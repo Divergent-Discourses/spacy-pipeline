@@ -4,7 +4,7 @@ import json
 import sys
 import spacy
 from typing import Dict, Optional
-from functions import BoTokTokenizer
+from botok_loader import BoTokTokenizer
 from unified_botok_tokenizer import create_spacy_tokenizer_factory
 
 

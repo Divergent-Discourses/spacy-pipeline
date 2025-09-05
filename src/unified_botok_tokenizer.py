@@ -30,7 +30,7 @@ Notes
 from typing import List, Tuple, Optional, Callable
 
 # Hard-wired default Botok config path (as you requested)
-DEFAULT_BOTOK_CONFIG_PATH = "/home/yuki/Documents/pybo"
+DEFAULT_BOTOK_CONFIG_PATH = "/your/path/Documents/pybo"
 
 # Tibetan punctuation we care about
 TSEK = "\u0F0B"
