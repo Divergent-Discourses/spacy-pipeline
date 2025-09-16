@@ -25,21 +25,21 @@ The spaCy pipeline `bo_core_news_lg` includes both a Part-of-Speech (POS) tagger
 
 ## Installation
 
-1. Install botok, see the [instruction](https://github.com/Divergent-Discourses/modern-botok?tab=readme-ov-file#how-to-use) in modern-botok. Also modify the value of `DEFAULT_BOTOK_CONFIG_PATH` in `unified_botok_tokenizer.py` to point to the directory where the `pybo` folder has been created.
-
-2. Install a Tibetan model (bo_core_news_lg).
-      ```bash
-      pip install packages/bo_core_news_lg-0.0.5/dist/bo_core_news_lg-0.0.5.tar.gz # Linux/macOS
-      pip install packages\bo_core_news_lg-0.0.5\dist\bo_core_news_lg-0.0.5.tar.gz # Windonws (cmd)
-      ```
-
-3. Set up a virtual environment and install dependencies.
+1. Set up a virtual environment and install dependencies.
    ```bash
    python -m venv venv
    source venv/bin/activate # On macOS/Linux
    venv\Scripts\activate # On Windows (cmd)
    pip install -r requirements.txt
    ```
+   
+2. Install botok, see the [instruction](https://github.com/Divergent-Discourses/modern-botok?tab=readme-ov-file#how-to-use) in modern-botok. Also modify the value of `DEFAULT_BOTOK_CONFIG_PATH` in `unified_botok_tokenizer.py` to point to the directory where the `pybo` folder has been created.
+
+3. Install a Tibetan model (bo_core_news_lg).
+      ```bash
+      pip install packages/bo_core_news_lg-0.0.5/dist/bo_core_news_lg-0.0.5.tar.gz # Linux/macOS
+      pip install packages\bo_core_news_lg-0.0.5\dist\bo_core_news_lg-0.0.5.tar.gz # Windonws (cmd)
+      ```
    
 ## Usage
 
