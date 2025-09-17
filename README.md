@@ -26,27 +26,33 @@ The spaCy pipeline `bo_core_news_lg` includes both a Part-of-Speech (POS) tagger
 ## Installation
 
 1. Set up a virtual environment and install dependencies.
-   ```bash
+   ```bash/cmd
    python -m venv venv
    source venv/bin/activate # On macOS/Linux
    venv\Scripts\activate # On Windows (cmd)
    pip install -r requirements.txt
    ```
    
-2. Install botok, see the [instruction](https://github.com/Divergent-Discourses/modern-botok?tab=readme-ov-file#how-to-use) in modern-botok. Also modify the value of `DEFAULT_BOTOK_CONFIG_PATH` in `unified_botok_tokenizer.py` to point to the directory where the `pybo` folder has been created.
+* If you encounter the error `File C:\your\directory\spacy-pipeline\venv\Scripts\Activate.ps1 cannot be loaded because
+running scripts is disabled on this system` on Windows, run the following command from the root directory:
+   ```cmd
+   Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope CurrentUser
+   ```
+
+2. Install botok, see the [instruction](https://github.com/Divergent-Discourses/modern-botok?tab=readme-ov-file#how-to-use) in modern-botok. Also modify the value of `DEFAULT_BOTOK_CONFIG_PATH` in `unified_botok_tokenizer.py` in `src` folder to point to the directory where the `pybo` folder has been created.
 
 3. Install a Tibetan model (bo_core_news_lg).
-      ```bash
-      pip install packages/bo_core_news_lg-0.0.5/dist/bo_core_news_lg-0.0.5.tar.gz # Linux/macOS
-      pip install packages\bo_core_news_lg-0.0.5\dist\bo_core_news_lg-0.0.5.tar.gz # Windonws (cmd)
-      ```
+  ```bash/cmd
+  pip install packages/bo_core_news_lg-0.0.5/dist/bo_core_news_lg-0.0.5.tar.gz # Linux/macOS
+  pip install packages\bo_core_news_lg-0.0.5\dist\bo_core_news_lg-0.0.5.tar.gz # Windonws (cmd)
+  ```
    
 ## Usage
 
 ### Basic Command Structure
-Run the commands in the root directory where the `src` folder is located.
+Run the commands in the root directory where you cloned this repository.
 
-```bash
+```bash/cmd
 python src/model_executor.py -m <model_name> [options] <input>
 ```
 
@@ -63,38 +69,40 @@ python src/model_executor.py -m <model_name> [options] <input>
 
 ## Examples
 
+You can run the following example commands from the root directory where you cloned this repository.
+
 ### 1. Basic Text Processing (Full Analysis)
 
-```bash
+```bash/cmd
 python src/model_executor.py -m bo_core_news_lg -t "དེ་རིང་ང་ལགས་པའི་འདུ་འཁྲིལ་ལ་འགྲོ་དགོས།"
 ```
 
 ### 2. Named Entity Recognition Only
 
-```bash
+```bash/cmd
 python src/model_executor.py -m bo_core_news_lg -t "བཀྲ་ཤིས་ལྷུན་པོ་དགོན་པ་ཤི་ག་རྩེ་རྫོང་ཁུལ་དུ་ཡོད།" --task ner
 ```
 
 ### 3. Part-of-Speech Tagging Only
 
-```bash
+```bash/cmd
 python src/model_executor.py -m bo_core_news_lg -t "ང་ལ་དཔེ་ཆ་དགོས།" --task pos
 ```
 
 ### 4. Process File with JSON Output
 
-```bash
+```bash/cmd
 python src/model_executor.py -m bo_core_news_lg -i input.txt -f json -o results.json
 ```
 
 ### 5. CSV Output for Further Analysis
 
-```bash
+```bash/cmd
 python src/model_executor.py -m bo_core_news_lg -i document.txt -f csv -o analysis.csv
 ```
 
 ### 6. Display Help Information
 
-```bash
+```bash/cmd
 python src/model_executor.py --help
 ```

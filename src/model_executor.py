@@ -32,8 +32,7 @@ class SpacyNLPProcessor:
                 "text": ent.text,
                 "label": ent.label_,
                 "start": ent.start_char,
-                "end": ent.end_char,
-                "description": spacy.explain(ent.label_) or ent.label_
+                "end": ent.end_char
             })
 
         return {
@@ -55,9 +54,7 @@ class SpacyNLPProcessor:
                 "pos": token.pos_,
                 "is_alpha": token.is_alpha,
                 "is_stop": token.is_stop,
-                "is_punct": token.is_punct,
-                "dep": token.dep_,
-                "head": token.head.text
+                "is_punct": token.is_punct
             })
 
         return {
@@ -118,7 +115,8 @@ class SpacyNLPProcessor:
             output.append("-" * 20)
             for i, entity in enumerate(results['entities'], 1):
                 output.append(f"{i}. {entity['text']}")
-                output.append(f"   Label: {entity['label']} ({entity['description']})")
+                # output.append(f"   Label: {entity['label']} ({entity['description']})")
+                output.append(f"   Label: {entity['label']}")
                 output.append(f"   Position: {entity['start']}-{entity['end']}")
                 output.append("")
         elif 'entities' in results:
@@ -140,19 +138,19 @@ class SpacyNLPProcessor:
 
         # If entities are present, format as entity CSV
         if 'entities' in results and results['entities']:
-            output.append("Type,Text,Label,Description,Start,End")
+            output.append("Type,Text,Label,Start,End")
             for entity in results['entities']:
                 output.append(
-                    f'Entity,"{entity["text"]}",{entity["label"]},"{entity["description"]}",{entity["start"]},{entity["end"]}')
+                    f'Entity,"{entity["text"]}",{entity["label"]},{entity["start"]},{entity["end"]}')
 
         # If tokens are present, add token information
         if 'tokens' in results and results['tokens']:
             if output:  # Add separator if entities were already added
                 output.append("")
-            output.append("Type,Text,POS,IsAlpha,IsStop,IsPunct,Dependency,Head")
+            output.append("Type,Text,POS,IsAlpha,IsStop,IsPunct")
             for token in results['tokens']:
                 output.append(
-                    f'Token,"{token["text"]}",{token["pos"]},{token["is_alpha"]},{token["is_stop"]},{token["is_punct"]},{token["dep"]},"{token["head"]}"')
+                    f'Token,"{token["text"]}",{token["pos"]},{token["is_alpha"]},{token["is_stop"]},{token["is_punct"]}')
 
         return "\n".join(output)
 
