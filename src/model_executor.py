@@ -199,9 +199,7 @@ def main():
             sys.exit(1)
 
     # Initialize processor
-    processor = SpacyNLPProcessor(
-        model_name=args.model,
-    )
+    processor = SpacyNLPProcessor(model_name=args.model)
 
     # Get input text
     if args.text:
