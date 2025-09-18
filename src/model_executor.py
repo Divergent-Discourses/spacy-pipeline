@@ -115,7 +115,6 @@ class SpacyNLPProcessor:
             output.append("-" * 20)
             for i, entity in enumerate(results['entities'], 1):
                 output.append(f"{i}. {entity['text']}")
-                # output.append(f"   Label: {entity['label']} ({entity['description']})")
                 output.append(f"   Label: {entity['label']}")
                 output.append(f"   Position: {entity['start']}-{entity['end']}")
                 output.append("")
