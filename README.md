@@ -25,7 +25,14 @@ The spaCy pipeline `bo_core_news_lg` includes both a Part-of-Speech (POS) tagger
 
 ## Installation
 
-1. Set up a virtual environment and install dependencies.
+1. Open the terminal (macOS/Linux) or Command Prompt (Windows), and clone this repository:
+   ```bash/cmd
+   git clone git@github.com:Divergent-Discourses/spacy-pipeline.git
+   ``` 
+
+* Alternatively, you can download the repository as a ZIP file.
+
+2. Open the terminal in the directory where you cloned this repository, then set up a virtual environment and install the dependencies:
    ```bash/cmd
    python -m venv venv
    source venv/bin/activate # On macOS/Linux
@@ -39,9 +46,9 @@ running scripts is disabled on this system` on Windows, run the following comman
    Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope CurrentUser
    ```
 
-2. Install botok, see the [instruction](https://github.com/Divergent-Discourses/modern-botok?tab=readme-ov-file#how-to-use) in modern-botok (up to step 5 in the instructions). Also modify the value of `DEFAULT_BOTOK_CONFIG_PATH` in `unified_botok_tokenizer.py` in `src` folder to point to the directory where the `pybo` folder has been created.
+3. Install botok, see the [instruction](https://github.com/Divergent-Discourses/modern-botok?tab=readme-ov-file#how-to-use) in modern-botok (up to step 5 in the instructions). Also modify the value of `DEFAULT_BOTOK_CONFIG_PATH` in `unified_botok_tokenizer.py` in `src` folder to point to the directory where the `pybo` folder has been created.
 
-3. Install a Tibetan model (bo_core_news_lg).
+4. Install a Tibetan model (bo_core_news_lg).
   ```bash/cmd
   pip install packages/bo_core_news_lg-0.0.5/dist/bo_core_news_lg-0.0.5.tar.gz # Linux/macOS
   pip install packages\bo_core_news_lg-0.0.5\dist\bo_core_news_lg-0.0.5.tar.gz # Windonws (cmd)
