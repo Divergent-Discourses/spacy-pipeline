@@ -48,12 +48,15 @@ running scripts is disabled on this system` on Windows, run the following comman
 
 3. Install botok, see the [instruction](https://github.com/Divergent-Discourses/modern-botok?tab=readme-ov-file#how-to-use) in modern-botok (up to step 5 in the instructions). Also modify the value of `DEFAULT_BOTOK_CONFIG_PATH` in `unified_botok_tokenizer.py` in `src` folder to point to the directory where the `pybo` folder has been created.
 
-4. Install a Tibetan model (bo_core_news_lg).
+4. Install a Tibetan model (bo_core_news_lg). The latest model is `bo_core_news_lg-0.0.7`.
   ```bash/cmd
-  pip install packages/bo_core_news_lg-0.0.5/dist/bo_core_news_lg-0.0.5.tar.gz # Linux/macOS
-  pip install packages\bo_core_news_lg-0.0.5\dist\bo_core_news_lg-0.0.5.tar.gz # Windonws (cmd)
+  pip install packages/bo_core_news_lg-0.0.7/dist/bo_core_news_lg-0.0.7.tar.gz # Linux/macOS
+  pip install packages\bo_core_news_lg-0.0.7\dist\bo_core_news_lg-0.0.7.tar.gz # Windonws (cmd)
   ```
-   
+
+## Evaluation
+   Coming soon.
+
 ## Usage
 
 ### Basic Command Structure
