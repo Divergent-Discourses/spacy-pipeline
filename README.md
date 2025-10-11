@@ -14,6 +14,20 @@ The spaCy pipeline `bo_core_news_lg` includes both a Part-of-Speech (POS) tagger
 - **File and Text Input**: Process text directly or from files
 - **Tibetan-Specific Tokenization**: Uses specialized tokenizers for accurate Tibetan text processing
 
+### POS-tags
+The POS tags conform to the [Universal Dependencies](https://universaldependencies.org/u/pos/) POS-tag definitions.
+
+### NER tags
+- **PER (person)**: Names of individual people, including first, middle, and last names. When an honorific title or position designation appears with a personal name, the title should be tagged as POSITION separately from PER.
+- **ORG (organisation)**: Names of companies, government agencies, institutions, associations, and place names used as a metonym for organisations (e.g., ལྷ་ས་གྲོང་ཁྱེར་, རང་ལྗོངས་ and བོད་རང་སྐྱོང་ལྗོངས་), and other formally structured groups.
+- **SOC (social groups)**: Names of unstructured social groups, including workers, ethnic groups, soldiers, academics, youth, officials.
+- **TIME**: Temporal expressions including dates, times, epochs, durations, and periods.
+- **LOC (location)**: Geographic locations including countries, cities, addresses, landmarks, regions, and natural features.
+- **POSITION**: Religious, political, or job titles, roles, positions of authority, and honorifics. Titles (such as ཏཱ་བླ་མ་ངག་དབང་སྦྱིན་པ་ or ཤིས་ཀྲང་ཧྥུ་ཀྲུའུ་ཞི་) should be categorised separately from any associated personal names, which belong in the PER category.
+- **TITLE**: Names of published works, including books, articles, reports, films, songs, and other creative works or published or unpublished documents.
+- **SLOGAN**: Names of policies, political ideologies, political campaigns and drives. Catchphrases, mottos, proverbs, slogans, names of theories, or memorable phrases associated with political, commercial, or cultural entities. These may appear without explicit quotation markers.
+- **EVENT**: Named occasions including conferences, festivals, anniversaries, ceremonies, disasters, and historical events.
+
 ## Requirements
 
 - Python 3.6+
