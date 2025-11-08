@@ -18,6 +18,7 @@ The spaCy pipeline `bo_core_news_lg` includes both a Part-of-Speech (POS) tagger
 The POS tags conform to the [Universal Dependencies](https://universaldependencies.org/u/pos/) POS-tag definitions.
 
 ### NER tags
+The tag set was developed specifically for the study of Tibetan language newspapers of the 1950s and 1960s. This is reflected in the POSITION and SLOGAN tags, which will less usefull in other contexts. 
 - **PER (person)**: Names of individual people, including first, middle, and last names. When an honorific title or position designation appears with a personal name, the title is tagged as POSITION separately from PER.
 - **ORG (organisation)**: Names of companies, government agencies, institutions, associations, and place names used as a metonym for organisations (e.g., ལྷ་ས་གྲོང་ཁྱེར་, རང་ལྗོངས་ and བོད་རང་སྐྱོང་ལྗོངས་), and other formally structured groups.
 - **SOC (social groups)**: Names of unstructured social groups, including workers, ethnic groups, soldiers, academics, youth, officials.
@@ -130,3 +131,5 @@ python src/model_executor.py -m bo_core_news_lg -i document.txt -f csv -o analys
 ```bash/cmd
 python src/model_executor.py --help
 ```
+### 7. Training data
+will be published soon
