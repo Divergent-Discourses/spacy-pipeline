@@ -131,5 +131,5 @@ python src/model_executor.py -m bo_core_news_lg -i document.txt -f csv -o analys
 ```bash/cmd
 python src/model_executor.py --help
 ```
-### 7. Training data
+## Training data
 will be published soon
