@@ -42,7 +42,7 @@ The tag set was developed specifically for the study of Tibetan language newspap
 
 1. Open the terminal (macOS/Linux) or Command Prompt (Windows), and clone this repository:
    ```bash/cmd
-   git clone git@github.com:Divergent-Discourses/spacy-pipeline.git
+   git clone https://github.com/Divergent-Discourses/spacy-pipeline.git
    ``` 
 
 * Alternatively, you can download the repository as a ZIP file.
