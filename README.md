@@ -61,7 +61,9 @@ running scripts is disabled on this system` on Windows, run the following comman
    Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope CurrentUser
    ```
 
-3. Install botok, see the [instruction](https://github.com/Divergent-Discourses/modern-botok?tab=readme-ov-file#how-to-use) in modern-botok (up to step 5 in the instructions). Also modify the value of `DEFAULT_BOTOK_CONFIG_PATH` in `unified_botok_tokenizer.py` in `src` folder to point to the directory where the `pybo` folder has been created.
+* If you experience installation errors that you cannot address on your own, [Anaconda/Miniconda](https://www.anaconda.com/download/success) can be used to install the necessary libraries. Nonetheless, this solution is not ideal, as it typically introduces extra, unnecessary packages that may degrade performance.
+
+3. Install botok, see the [instruction](https://github.com/Divergent-Discourses/modern-botok?tab=readme-ov-file#how-to-use) in modern-botok (up to step 5 in the instructions). If modern-botok is installed on your system but not within your new virtual environment (venv), install botok there and proceed to skip all steps beyond step 2. Also modify the value of `DEFAULT_BOTOK_CONFIG_PATH` in `unified_botok_tokenizer.py` in `src` folder to point to the directory where the `pybo` folder has been created.
 
 4. Install a Tibetan model (bo_core_news_lg). The latest model is `bo_core_news_lg-0.0.7`.
   ```bash/cmd
