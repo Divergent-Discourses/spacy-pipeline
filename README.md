@@ -67,8 +67,8 @@ running scripts is disabled on this system` on Windows, run the following comman
 
 4. Install a Tibetan model (bo_core_news_lg). The latest model is `bo_core_news_lg-0.0.7`.
   ```bash/cmd
-  pip install packages/bo_core_news_lg-0.0.7/dist/bo_core_news_lg-0.0.7.tar.gz # Linux/macOS
-  pip install packages\bo_core_news_lg-0.0.7\dist\bo_core_news_lg-0.0.7.tar.gz # Windonws (cmd)
+  pip install packages/bo_core_news_lg-0.0.7.tar.gz # Linux/macOS
+  pip install packages\bo_core_news_lg-0.0.7.tar.gz # Windonws (cmd)
   ```
 
 ## Evaluation
