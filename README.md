@@ -52,7 +52,8 @@ The tag set was developed specifically for the study of Tibetan language newspap
    python -m venv venv
    source venv/bin/activate # On macOS/Linux
    venv\Scripts\activate # On Windows (cmd)
-   pip install --no-deps -r requirements.txt
+   pip install -r requirements.txt
+   pip install --no-deps thinc==8.3.6 # downgrade thinc
    ```
    
 * If you encounter the error `File C:\your\directory\spacy-pipeline\venv\Scripts\Activate.ps1 cannot be loaded because
