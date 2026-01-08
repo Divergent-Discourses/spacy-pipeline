@@ -52,7 +52,7 @@ The tag set was developed specifically for the study of Tibetan language newspap
    python -m venv venv
    source venv/bin/activate # On macOS/Linux
    venv\Scripts\activate # On Windows (cmd)
-   pip install -r requirements.txt
+   pip install --no-deps -r requirements.txt
    ```
    
 * If you encounter the error `File C:\your\directory\spacy-pipeline\venv\Scripts\Activate.ps1 cannot be loaded because
@@ -75,6 +75,7 @@ running scripts is disabled on this system` on Windows, run the following comman
   pip install packages/bo_core_news_lg-0.0.7.tar.gz # Linux/macOS
   pip install packages\bo_core_news_lg-0.0.7.tar.gz # Windonws (cmd)
   ```
+* If you find `bo_core_news_lg-0.0.7` to be too slow, you can instead install `bo_core_news_lg-0.0.5`, which runs significantly faster, although its performance is somewhat inferior.
 
 ## Evaluation
    Coming soon.
