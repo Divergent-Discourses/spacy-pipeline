@@ -105,6 +105,27 @@ python src/model_executor.py -m <model_name> [options] <input>
 - `--task {ner,pos,full}` - Task to perform (default: full)
 - `-f, --format {json,text,csv}` - Output format (default: text)
 - `-o, --output` - Output file path (prints to stdout if not specified)
+- `--csv-file` - See [CSV Mode](#csv-mode-ner-only) below
+
+#### CSV Mode (NER Only)
+
+Use `--csv-file` to process a CSV file row by row. Runs **NER only**, regardless of `--task`, and output is always **JSON**, regardless of `-f/--format`. Cannot be combined with `-t/--text` or `-i/--input-file`.
+
+**Expected CSV Columns**
+
+| Column | Description |
+|---|---|
+| `normalised_paragraph` | Text used as input for NER |
+| `paragraph_idx` | Output as `Id` in results |
+| `filename` | Output as `Filename` in results |
+| `year`, `month`, `day` | Combined into `Date` as `YYYY-MM-DD` (blanks default to `00`, blank year to `0`) |
+
+**CSV-Specific Options**
+
+| Option | Description |
+|---|---|
+| `--csv-encoding` | CSV file encoding (default: `utf-8`) |
+| `--batch-size` | Number of rows processed per NER batch (default: `64`) |
 
 ## Examples
 
@@ -140,7 +161,12 @@ python src/model_executor.py -m bo_core_news_lg -i input.txt -f json -o results.
 python src/model_executor.py -m bo_core_news_lg -i document.txt -f csv -o analysis.csv
 ```
 
-### 6. Display Help Information
+### 6. CSV Mode (NER only)
+```bash/cmd
+python src/model_executor.py -m bo_core_news_lg --csv-file YOUR_CSV_FILE.csv -f json json --task ner -o results.json
+```
+
+### 7. Display Help Information
 
 ```bash/cmd
 python src/model_executor.py --help
