@@ -84,7 +84,16 @@ running scripts is disabled on this system` on Windows, run the following comman
 * If you find `bo_core_news_lg-0.0.7` to be too slow, you can instead install `bo_core_news_lg-0.0.5`, which runs significantly faster, although its performance is somewhat inferior.
 
 ## Evaluation
-   Coming soon.
+   25 entences were randomly selected from the test dataset, which was not used for training. A human evaluator assessed the quality of the named entities extracted by the model. On average, each sentence contains 310.2 tshegs, which may be regarded as the average sentence length.
+
+| Metric | Named Entity Extraction | Label Attribution |
+|---|---|---|
+| Precision | 0.9267 | 0.9472 |
+| Recall | 0.7117 | 0.7275 |
+| F1 Score | 0.8051 | 0.8228 |
+
+* Total number of retrieved named entities: 341 (denominator for precision)
+* Total number of relevant named entities: 444 (denominator for recall)
 
 ## Usage
 
@@ -146,4 +155,4 @@ python src/model_executor.py -m bo_core_news_lg -i document.txt -f csv -o analys
 python src/model_executor.py --help
 ```
 ## Training data
-will be published soon
+The training data used for this project are available on [Zenodo](https://zenodo.org/records/17942673).
